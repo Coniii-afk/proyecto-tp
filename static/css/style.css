@@ -204,3 +204,91 @@ body{
 .flecha:hover{
     background:rgba(46, 166, 111, 0.1);
 }
+/* inicio de sesion*/
+*{
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+font-family: Arial;
+}
+
+body{
+background-color: #f2f2f2;
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh;
+}
+
+.caja{
+background-color: white;
+width: 350px;
+padding: 30px;
+border-radius: 15px;
+}
+
+.arriba{
+display: flex;
+justify-content: space-around;
+margin-bottom: 25px;
+}
+
+.linea{
+border-bottom: 3px solid #3dd8b5;
+padding-bottom: 5px;
+}
+
+.logo{
+background-color: #eafff9;
+width: 80px;
+height: 80px;
+border-radius: 50%;
+display: flex;
+justify-content: center;
+align-items: center;
+margin: auto;
+font-size: 35px;
+margin-bottom: 20px;
+}
+
+h2{
+text-align: center;
+margin-bottom: 10px;
+}
+
+.texto{
+text-align: center;
+color: gray;
+margin-bottom: 20px;
+}
+
+input{
+width: 100%;
+padding: 12px;
+margin-top: 5px;
+margin-bottom: 15px;
+border-radius: 10px;
+border: 1px solid gray;
+}
+
+.olvido{
+text-align: right;
+color: #3dd8b5;
+margin-bottom: 20px;
+}
+
+button{
+width: 100%;
+padding: 12px;
+border: none;
+border-radius: 10px;
+background-color: #3dd8b5;
+color: white;
+font-size: 16px;
+}
+
+.crear{
+text-align: center;
+margin-top: 20px;
+color: gray;
+}
