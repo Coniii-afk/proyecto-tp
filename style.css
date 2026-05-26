@@ -1,0 +1,206 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background:#f5f7f6;
+    overflow-x:hidden;
+}
+.cabecera{
+    height:130px;
+
+    display:flex;
+    align-items:center;
+
+    padding:0 90px;
+}
+
+.logo img{
+    width:170px;
+}
+
+.menu{
+    display:flex;
+    gap:30px;
+
+    margin-left:auto;
+    margin-right:40px;
+}
+
+.menu a{
+    text-decoration:none;
+    color:#555;
+    font-size:16px;
+}
+
+.botones{
+    display:flex;
+    gap:12px;
+}
+
+.inicio{
+    border:none;
+    background:#254d3b;
+    color:white;
+    padding:12px 18px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:14px;
+}
+
+.registro{
+    border:none;
+    background:#2ea66f;
+    color:white;
+    padding:12px 18px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.principal{
+    height:650px;
+    position:relative;
+    overflow:hidden;
+}
+
+.texto{
+    width:50%;
+    padding:80px 60px;
+
+    position:relative;
+    z-index:2;
+}
+
+.texto h1{
+    font-size:60px;
+    line-height:1.05;
+    color:#222;
+
+    margin-bottom:25px;
+}
+
+.texto p{
+    font-size:17px;
+    color:#6f6f6f;
+
+    width:80%;
+    line-height:1.7;
+
+    margin-bottom:30px;
+}
+
+.buscador{
+    display:flex;
+    gap:15px;
+}
+
+.buscador input{
+    width:340px;
+    height:55px;
+
+    border:none;
+    border-radius:12px;
+
+    padding-left:15px;
+
+    background:white;
+
+    box-shadow:0 4px 10px rgba(0,0,0,0.05);
+}
+
+.buscador button{
+    width:120px;
+    border:none;
+    border-radius:12px;
+
+    background:#2ea66f;
+    color:white;
+
+    cursor:pointer;
+}
+
+.imagen{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    z-index:1;
+    overflow:hidden;
+}
+
+.imagen img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center;
+    display:block;
+}
+
+.tarjeta{
+    width:95%;
+    max-width:1400px;
+    min-height:240px;
+
+    margin:60px auto 0;
+
+    background:white;
+    border-radius:18px;
+
+    display:flex;
+    align-items:center;
+
+    padding:25px 45px;
+
+    box-shadow:0 8px 20px rgba(0,0,0,0.06);
+}
+
+
+.icono img{
+    width:70px;
+}
+
+
+.info{
+    margin-left:20px;
+}
+
+.info h3{
+    font-size:26px;
+    margin-bottom:8px;
+    color:#222;
+}
+
+.info p{
+    color:#777;
+    font-size:16px;
+}
+
+.flecha{
+    margin-left:auto;
+
+    width:45px;
+    height:45px;
+
+    border:none;
+    border-radius:50%;
+
+    background:transparent;
+
+    font-size:28px;
+    color:#2ea66f;
+
+    cursor:pointer;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    transition:0.2s;
+}
+
+.flecha:hover{
+    background:rgba(46, 166, 111, 0.1);
+}
