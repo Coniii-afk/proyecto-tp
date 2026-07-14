@@ -1,31 +1,424 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perros</title>
+
+    <title>Panel del usuario | FindPets</title>
+
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
 </head>
+
 
 <body>
 
-<header class="cabecera">
 
-    <div class="logo">
-        <img src="logo.png" alt="">
-    </div>
+    <!-- CABECERA -->
 
-    <nav class="menu">
-        <a href="#">Inicio</a>
-        <a href="#">Mapa</a>
-        <a href="#">Buscar perros</a>
-        <a href="#">Sobre nosotros</a>
-        <a href="#">Contacto</a>
-    </nav>
+    <header class="cabecera">
 
-    <div class="botones">
-        <button class="inicio">Iniciar sesión</button>
-        <button class="registro">Registrarse</button>
-    </div>
 
-</header>
+        <div class="logo">
+
+            <a href="{{ url_for('inicio') }}">
+
+                <img src="{{ url_for('static', filename='imgs/logo.png') }}" alt="Logo FindPets">
+
+            </a>
+
+        </div>
+
+
+
+        <nav class="menu">
+
+
+            <a href="{{ url_for('inicio') }}">
+                Inicio
+            </a>
+
+
+            <a href="{{ url_for('buscarporcodigo') }}">
+                Buscar mascota
+            </a>
+
+
+            <a href="{{ url_for('formulariomascota') }}">
+                Registrar mascota
+            </a>
+
+
+            <a href="{{ url_for('murocomunitario') }}">
+                Muro comunitario
+            </a>
+
+
+        </nav>
+
+
+
+
+        <div class="botones">
+
+
+            <a href="{{ url_for('paneldelusuario') }}" class="boton iniciar">
+
+                Mi cuenta
+
+            </a>
+
+
+
+            <a href="#" class="boton registro">
+
+                Cerrar sesión
+
+            </a>
+
+
+        </div>
+
+
+    </header>
+
+
+
+
+
+
+
+    <!-- PANEL DEL USUARIO -->
+
+    <main class="panel">
+
+
+
+
+
+        <section class="bienvenida">
+
+
+            <h1>
+                Bienvenido a tu panel
+            </h1>
+
+
+            <p>
+
+                Aquí puedes administrar tus mascotas y publicaciones.
+
+            </p>
+
+
+        </section>
+
+
+
+
+
+
+
+        <!-- DATOS DEL USUARIO -->
+
+        <section class="datos-usuario">
+
+
+            <h2>
+                Mis datos
+            </h2>
+
+
+
+
+            <div class="tarjeta">
+
+
+                <p>
+
+                    <strong>Nombre:</strong>
+
+                    {{ usuario.nombre }}
+
+                </p>
+
+
+
+                <p>
+
+                    <strong>Correo:</strong>
+
+                    {{ usuario.correo }}
+
+                </p>
+
+
+
+                <p>
+
+                    <strong>Teléfono:</strong>
+
+                    {{ usuario.telefono }}
+
+                </p>
+
+
+
+                <a href="#" class="boton">
+
+                    Editar datos
+
+                </a>
+
+
+
+            </div>
+
+
+
+        </section>
+
+
+
+
+
+
+
+
+        <!-- MASCOTAS DEL USUARIO -->
+
+        <section class="mis-mascotas">
+
+
+            <h2>
+                Mis mascotas
+            </h2>
+
+
+
+
+            <div class="tarjetas">
+
+
+
+                {% if mascotas %}
+
+
+
+                {% for mascota in mascotas %}
+
+
+
+                <div class="tarjeta mascota">
+
+
+                    <img src="{{ url_for('static', filename='imgs/perro1.png') }}" alt="Mascota">
+
+
+                    <h3>
+
+                        {{ mascota.nombre }}
+
+                    </h3>
+
+
+
+                    <p>
+
+                        Código:
+                        {{ mascota.codigo }}
+
+                    </p>
+
+
+
+                    <p>
+
+                        {{ mascota.tipo }}
+
+                    </p>
+
+
+
+                    <a href="#" class="boton">
+
+                        Ver detalles
+
+                    </a>
+
+
+
+                    <a href="#" class="boton eliminar">
+
+                        Eliminar
+
+                    </a>
+
+
+
+                </div>
+
+
+
+
+                {% endfor %}
+
+
+
+
+                {% else %}
+
+
+
+                <p>
+
+                    Todavía no tienes mascotas registradas.
+
+                </p>
+
+
+
+                {% endif %}
+
+
+
+            </div>
+
+
+
+        </section>
+
+
+
+
+
+
+
+
+        <!-- PUBLICACIONES -->
+
+        <section class="mis-publicaciones">
+
+
+            <h2>
+
+                Mis publicaciones
+
+            </h2>
+
+
+
+            <div class="tarjetas">
+
+
+                {% if publicaciones %}
+
+
+
+                {% for publicacion in publicaciones %}
+
+
+
+                <div class="tarjeta">
+
+
+                    <h3>
+
+                        {{ publicacion.titulo }}
+
+                    </h3>
+
+
+
+                    <p>
+
+                        {{ publicacion.descripcion }}
+
+                    </p>
+
+
+
+                    <a href="#" class="boton">
+
+                        Editar
+
+                    </a>
+
+
+
+                </div>
+
+
+
+                {% endfor %}
+
+
+
+
+                {% else %}
+
+
+
+                <p>
+
+                    No tienes publicaciones realizadas.
+
+                </p>
+
+
+
+                {% endif %}
+
+
+
+            </div>
+
+
+
+        </section>
+
+
+
+
+
+
+    </main>
+
+
+
+
+
+
+    <footer class="pie">
+
+
+        <h3>
+            FindPets
+        </h3>
+
+
+        <p>
+            Ayudando a reunir mascotas con sus familias.
+        </p>
+
+
+        <p>
+            © 2026 FindPets
+        </p>
+
+
+    </footer>
+
+
+
+
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+
+</body>
+
+</html>

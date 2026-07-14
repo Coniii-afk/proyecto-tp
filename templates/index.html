@@ -1,70 +1,331 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Perros</title>
-<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FindPets | Inicio</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
 </head>
+
 
 <body>
 
-<header class="cabecera">
 
-    <div class="logo">
-        <img src="{{ url_for('static', filename='imgs/logo.png') }}" alt="">
-    </div>
+    <header class="cabecera">
 
-    <nav class="menu">
-        <a href="#">Inicio</a>
-        <a href="#">Mapa</a>
-        <a href="#">Buscar perros</a>
-        <a href="#">Sobre nosotros</a>
-        <a href="#">Contacto</a>
-    </nav>
+        <div class="logo">
 
-    <div class="botones">
-        <button class="inicio">Iniciar sesión</button>
-        <button class="registro">Registrarse</button>
-    </div>
+            <a href="{{ url_for('inicio') }}">
 
-</header>
+                <img src="{{ url_for('static', filename='imgs/logo.png') }}" alt="Logo FindPets">
 
-<main class="principal">
+            </a>
 
-    <section class="texto">
-
-        <h1>Ayudamos a reunir perros perdidos con sus dueños</h1>
-
-        <p>
-            Si encontraste un perro, ingresa el código de su placa para ver la información del dueño.
-        </p>
-
-        <div class="buscador">
-            <input type="text" placeholder="Ingresa el código único">
-            <button>Buscar</button>
         </div>
 
+
+        <nav class="menu">
+
+            <a href="{{ url_for('inicio') }}">
+                Inicio
+            </a>
+
+            <a href="{{ url_for('buscarporcodigo') }}">
+                Buscar mascota
+            </a>
+
+            <a href="{{ url_for('formulariomascota') }}">
+                Registrar mascota
+            </a>
+
+            <a href="{{ url_for('murocomunitario') }}">
+                Muro comunitario
+            </a>
+
+        </nav>
+
+
+        <div class="botones">
+
+            <a href="{{ url_for('iniciosesion') }}" class="boton iniciar">
+                Iniciar sesión
+            </a>
+
+            <a href="{{ url_for('registrate') }}" class="boton registro">
+                Registrarse
+            </a>
+
+        </div>
+
+
+    </header>
+
+
+
+    <main class="principal">
+
+
+        <section class="texto">
+
+
+            <h1>
+                Ayudamos a reunir mascotas perdidas con sus familias
+            </h1>
+
+
+            <p>
+                Si encontraste una mascota con una placa FindPets,
+                ingresa su código para encontrar información de contacto.
+            </p>
+
+
+
+            <form class="buscador" action="{{ url_for('buscarporcodigo') }}" method="GET">
+
+
+                <input type="text" name="codigo" id="codigo" placeholder="Ingresa el código único" required>
+
+
+                <button type="submit">
+                    Buscar
+                </button>
+
+
+            </form>
+
+
+        </section>
+
+
+
+        <section class="imagen">
+
+            <img src="{{ url_for('static', filename='imgs/imagdeperro.png') }}" alt="Perro FindPets">
+
+        </section>
+
+
+    </main>
+
+
+
+
+    <section class="funciona">
+
+
+        <h2>
+            ¿Cómo funciona FindPets?
+        </h2>
+
+
+
+        <div class="tarjetas">
+
+
+            <div class="tarjeta">
+
+                <h3>
+                    Registra tu mascota
+                </h3>
+
+                <p>
+                    Guarda los datos de tu mascota
+                    para mantenerla protegida.
+                </p>
+
+            </div>
+
+
+
+            <div class="tarjeta">
+
+                <h3>
+                    Código único
+                </h3>
+
+                <p>
+                    Cada mascota tendrá un código
+                    para poder identificarla.
+                </p>
+
+            </div>
+
+
+
+            <div class="tarjeta">
+
+                <h3>
+                    Comunidad
+                </h3>
+
+                <p>
+                    Personas podrán ayudarte a encontrar
+                    una mascota perdida.
+                </p>
+
+            </div>
+
+
+        </div>
+
+
     </section>
 
-    <section class="imagen">
-        <img src="{{ url_for('static', filename='imgs/imagdeperro.png') }}" alt="">
+
+
+
+    <section class="opciones">
+
+
+        <h2>
+            Servicios de FindPets
+        </h2>
+
+
+
+        <div class="tarjetas">
+
+
+            <div class="tarjeta">
+
+                <h3>
+                    Buscar mascota
+                </h3>
+
+                <p>
+                    Encuentra información usando
+                    el código de la placa.
+                </p>
+
+
+                <a href="{{ url_for('buscarporcodigo') }}" class="boton">
+                    Buscar
+                </a>
+
+
+            </div>
+
+
+
+
+            <div class="tarjeta">
+
+                <h3>
+                    Registrar mascota
+                </h3>
+
+                <p>
+                    Crea un perfil para tu mascota
+                    con sus datos.
+                </p>
+
+
+                <a href="{{ url_for('formulariomascota') }}" class="boton">
+                    Registrar
+                </a>
+
+
+            </div>
+
+
+
+
+            <div class="tarjeta">
+
+                <h3>
+                    Muro comunitario
+                </h3>
+
+                <p>
+                    Publica mascotas perdidas
+                    o encontradas.
+                </p>
+
+
+                <a href="{{ url_for('murocomunitario') }}" class="boton">
+                    Ver muro
+                </a>
+
+
+            </div>
+
+
+        </div>
+
+
     </section>
 
-</main>
 
-<section class="tarjeta">
 
-    <div class="icono">
-        <img src="{{ url_for('static', filename='imgs/personaperro.png') }}" alt="">
-    </div>
 
-    <div class="info">
-        <h3>Ver muro comunitario</h3>
-        <p>Observa las mascotas reportadas recientemente por la comunidad.</p>
-    </div>
-   <button class="flecha">→</button>
-</section>
+
+    <section class="informacion">
+
+
+        <div class="texto">
+
+
+            <h2>
+                Protege a tu mascota
+            </h2>
+
+
+            <p>
+                FindPets facilita la conexión entre
+                dueños y personas que encuentran mascotas.
+            </p>
+
+
+        </div>
+
+
+
+        <div class="imagen">
+
+
+            <img src="{{ url_for('static', filename='imgs/personaperro.png') }}" alt="Persona con perro">
+
+
+        </div>
+
+
+    </section>
+
+
+
+
+
+    <footer class="pie">
+
+
+        <h3>
+            FindPets
+        </h3>
+
+
+        <p>
+            Ayudando a reunir mascotas con sus familias.
+        </p>
+
+
+        <p>
+            © 2026 FindPets
+        </p>
+
+
+    </footer>
+
+
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
 
 </body>
+
 </html>
