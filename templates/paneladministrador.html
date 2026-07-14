@@ -2,543 +2,217 @@
 <html lang="es">
 
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Panel administrador | FindPets</title>
-
+    <title></title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-
 </head>
 
-
 <body>
-
-
-    <!-- CABECERA -->
-
     <header class="cabecera">
-
-
         <div class="logo">
-
             <a href="{{ url_for('inicio') }}">
-
                 <img src="{{ url_for('static', filename='imgs/logo.png') }}" alt="Logo FindPets">
-
             </a>
-
         </div>
-
-
-
         <nav class="menu">
-
-
             <a href="{{ url_for('inicio') }}">
                 Inicio
             </a>
-
-
             <a href="{{ url_for('paneladministrador') }}">
                 Administrador
             </a>
-
-
             <a href="{{ url_for('murocomunitario') }}">
                 Muro
             </a>
-
-
         </nav>
-
-
-
         <div class="botones">
-
-
             <a href="#" class="boton registro">
-
                 Cerrar sesión
-
             </a>
-
-
         </div>
-
-
     </header>
-
-
-
-
-
-
-
-    <!-- PANEL ADMINISTRADOR -->
-
     <main class="panel-admin">
-
-
-
-
-
         <section class="titulo-panel">
-
-
             <h1>
                 Panel de administrador
             </h1>
-
-
             <p>
-
                 Administra la información de FindPets desde este panel.
-
             </p>
-
-
         </section>
-
-
-
-
-
-
-
-        <!-- RESUMEN -->
-
         <section class="resumen">
-
-
             <h2>
                 Resumen del sistema
             </h2>
-
-
-
             <div class="tarjetas">
-
-
-
                 <div class="tarjeta">
-
                     <h3>
                         Usuarios
                     </h3>
-
                     <p>
                         {{ cantidad_usuarios }}
                     </p>
-
                 </div>
-
-
-
-
                 <div class="tarjeta">
-
                     <h3>
                         Mascotas registradas
                     </h3>
-
                     <p>
                         {{ cantidad_mascotas }}
                     </p>
-
                 </div>
-
-
-
-
                 <div class="tarjeta">
-
                     <h3>
                         Publicaciones
                     </h3>
-
                     <p>
                         {{ cantidad_publicaciones }}
                     </p>
-
                 </div>
-
-
             </div>
-
-
         </section>
-
-
-
-
-
-
-
-
-        <!-- USUARIOS -->
-
         <section class="tabla">
-
-
             <h2>
                 Usuarios registrados
             </h2>
-
-
-
             <table>
-
-
                 <thead>
-
                     <tr>
-
                         <th>
                             Nombre
                         </th>
-
                         <th>
                             Correo
                         </th>
-
                         <th>
                             Teléfono
                         </th>
-
                         <th>
                             Acción
                         </th>
-
                     </tr>
-
                 </thead>
-
-
-
                 <tbody>
-
-
-
                     {% if usuarios %}
-
-
                     {% for usuario in usuarios %}
-
-
                     <tr>
-
                         <td>
                             {{ usuario.nombre }}
                         </td>
-
-
                         <td>
                             {{ usuario.correo }}
                         </td>
-
-
                         <td>
                             {{ usuario.telefono }}
                         </td>
-
-
                         <td>
-
                             <a href="#" class="boton eliminar">
-
                                 Eliminar
-
                             </a>
-
                         </td>
-
-
                     </tr>
-
-
                     {% endfor %}
-
-
-
                     {% endif %}
-
-
-
                 </tbody>
-
-
             </table>
-
-
         </section>
-
-
-
-
-
-
-
-
-        <!-- MASCOTAS -->
-
         <section class="tabla">
-
-
             <h2>
                 Mascotas registradas
             </h2>
-
-
-
-
             <table>
-
-
                 <thead>
-
                     <tr>
-
                         <th>
                             Nombre
                         </th>
-
                         <th>
                             Código
                         </th>
-
                         <th>
                             Dueño
                         </th>
-
                         <th>
                             Acción
                         </th>
-
-
                     </tr>
-
                 </thead>
-
-
-
-
                 <tbody>
-
-
-
                     {% if mascotas %}
-
-
                     {% for mascota in mascotas %}
-
-
-
                     <tr>
-
-
                         <td>
                             {{ mascota.nombre }}
                         </td>
-
-
-
                         <td>
                             {{ mascota.codigo }}
                         </td>
-
-
-
                         <td>
                             {{ mascota.dueno }}
                         </td>
-
-
-
                         <td>
-
-
                             <a href="#" class="boton eliminar">
-
                                 Eliminar
-
                             </a>
-
-
                         </td>
-
-
-
                     </tr>
-
-
-
                     {% endfor %}
-
-
-
                     {% endif %}
-
-
-
                 </tbody>
-
-
-
             </table>
-
-
-
         </section>
-
-
-
-
-
-
-
-
-        <!-- PUBLICACIONES -->
-
         <section class="tabla">
-
-
             <h2>
                 Publicaciones realizadas
             </h2>
-
-
-
-
             <table>
-
-
                 <thead>
-
                     <tr>
-
                         <th>
                             Título
                         </th>
-
                         <th>
                             Tipo
                         </th>
-
                         <th>
                             Acción
                         </th>
-
                     </tr>
-
-
                 </thead>
-
-
-
-
                 <tbody>
-
-
-
                     {% if publicaciones %}
-
-
-
                     {% for publicacion in publicaciones %}
-
-
-
                     <tr>
-
-
                         <td>
                             {{ publicacion.titulo }}
                         </td>
-
-
-
                         <td>
                             {{ publicacion.tipo }}
                         </td>
-
-
-
                         <td>
-
-
                             <a href="#" class="boton eliminar">
-
                                 Eliminar
-
                             </a>
-
-
                         </td>
-
-
-
                     </tr>
-
-
-
                     {% endfor %}
-
-
-
                     {% endif %}
-
-
-
                 </tbody>
-
-
             </table>
-
-
-
         </section>
-
-
-
-
-
     </main>
-
-
-
-
-
-
     <footer class="pie">
-
-
         <h3>
             FindPets
         </h3>
-
-
         <p>
             Panel de administración.
         </p>
-
-
         <p>
             © 2026 FindPets
         </p>
-
-
     </footer>
-
-
-
-
-
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-
-
 </body>
 
 </html>

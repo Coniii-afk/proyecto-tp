@@ -1,390 +1,134 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Muro comunitario | FindPets</title>
-
+    <title></title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-
 </head>
-
-
 <body>
-
-
-    <!-- CABECERA -->
-
     <header class="cabecera">
-
-
         <div class="logo">
-
             <a href="{{ url_for('inicio') }}">
-
                 <img src="{{ url_for('static', filename='imgs/logo.png') }}" alt="Logo FindPets">
-
             </a>
-
         </div>
-
-
-
         <nav class="menu">
-
-
             <a href="{{ url_for('inicio') }}">
                 Inicio
             </a>
-
-
             <a href="{{ url_for('buscarporcodigo') }}">
                 Buscar mascota
             </a>
-
-
             <a href="{{ url_for('formulariomascota') }}">
                 Registrar mascota
             </a>
-
-
             <a href="{{ url_for('murocomunitario') }}">
                 Muro comunitario
             </a>
-
-
         </nav>
-
-
-
-
         <div class="botones">
-
-
             <a href="{{ url_for('iniciosesion') }}" class="boton iniciar">
-
                 Iniciar sesión
-
             </a>
-
-
-
             <a href="{{ url_for('registrate') }}" class="boton registro">
-
                 Registrarse
-
             </a>
-
-
         </div>
-
-
     </header>
-
-
-
-
-
-
-    <!-- CONTENIDO -->
-
     <main class="muro">
-
-
-
-
-
         <section class="titulo-muro">
-
-
             <h1>
                 Muro comunitario
             </h1>
-
-
             <p>
                 Comparte información de mascotas perdidas o encontradas
                 y ayuda a la comunidad.
             </p>
-
-
         </section>
-
-
-
-
-
-
-
-        <!-- CREAR PUBLICACION -->
-
         <section class="crear-publicacion">
-
-
             <h2>
                 Crear publicación
             </h2>
-
-
-
-
             <form action="{{ url_for('murocomunitario') }}" method="POST" enctype="multipart/form-data">
-
-
-
-
-
                 <label for="tipo_publicacion">
-
                     Tipo de publicación
-
                 </label>
-
-
                 <select id="tipo_publicacion" name="tipo_publicacion" required>
-
-
                     <option value="">
                         Seleccionar
                     </option>
-
-
                     <option value="perdida">
                         Mascota perdida
                     </option>
-
-
                     <option value="encontrada">
                         Mascota encontrada
                     </option>
-
-
                 </select>
-
-
-
-
-
-
                 <label for="titulo">
-
                     Título
-
                 </label>
-
-
                 <input type="text" id="titulo" name="titulo" placeholder="Ejemplo: Se perdió mi perro Max" required>
-
-
-
-
-
-
-
                 <label for="descripcion">
-
                     Descripción
-
                 </label>
-
-
                 <textarea id="descripcion" name="descripcion" placeholder="Escribe información importante"></textarea>
-
-
-
-
-
-
-
                 <label for="ubicacion">
-
                     Ubicación
-
                 </label>
-
-
                 <input type="text" id="ubicacion" name="ubicacion" placeholder="Lugar donde se perdió o encontró">
-
-
-
-
-
-
-
                 <label for="imagen">
-
                     Imagen de la mascota
-
                 </label>
-
-
                 <input type="file" id="imagen" name="imagen" accept="image/*">
-
-
-
-
-
-
-
                 <button type="submit" class="boton enviar">
-
                     Publicar
-
                 </button>
-
-
-
             </form>
-
-
-
         </section>
-
-
-
-
-
-
-
-        <!-- PUBLICACIONES -->
-
         <section class="lista-publicaciones">
-
-
             <h2>
                 Publicaciones recientes
             </h2>
-
-
-
-
-
             {% if publicaciones %}
-
-
-
             {% for publicacion in publicaciones %}
-
-
-
-
             <article class="publicacion">
-
-
                 <img src="{{ url_for('static', filename='imgs/perro1.png') }}" alt="Mascota publicada">
-
-
-
-
-
                 <div class="datos-publicacion">
-
-
                     <h3>
                         {{ publicacion.titulo }}
                     </h3>
-
-
-
                     <p>
                         {{ publicacion.descripcion }}
                     </p>
-
-
-
                     <p>
-
                         <strong>Ubicación:</strong>
                         {{ publicacion.ubicacion }}
-
                     </p>
-
-
-
                     <p>
-
                         <strong>Tipo:</strong>
                         {{ publicacion.tipo }}
-
                     </p>
-
-
-
                 </div>
-
-
-
             </article>
-
-
-
-
-
             {% endfor %}
-
-
-
             {% else %}
-
-
-
             <p class="sin-publicaciones">
-
                 Aún no hay publicaciones.
-
             </p>
-
-
-
             {% endif %}
-
-
-
         </section>
-
-
-
-
-
     </main>
-
-
-
-
-
-
-
     <footer class="pie">
-
-
         <h3>
             FindPets
         </h3>
-
-
         <p>
             Ayudando a reunir mascotas con sus familias.
         </p>
-
-
         <p>
             © 2026 FindPets
         </p>
-
-
     </footer>
-
-
-
-
-
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-
-
 </body>
-
 </html>
